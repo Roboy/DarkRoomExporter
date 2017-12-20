@@ -55,9 +55,10 @@ def run(context):
         i = 0
         for points in constructionPoints:
             for point in points:
-                line = '- [' + str (i) + ', ' + str(point.geometry.x/100) + ', ' + str(point.geometry.y/100) + ', ' + str(point.geometry.z/100) + ']\n'
-                f.write(line);
-                i = i+1
+                if point.name[:2] == "LS":
+                    line = '- [' + str (i) + ', ' + str(point.geometry.x/100) + ', ' + str(point.geometry.y/100) + ', ' + str(point.geometry.z/100) + ']\n'
+                    f.write(line);
+                    i = i+1
         f.close()
         dialogResult = ui.messageBox('Cooridates of all construction points written to file: ' + filename) 
 
